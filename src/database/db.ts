@@ -1,7 +1,6 @@
 import sequelize, { Sequelize } from "sequelize"
 
 
-
 class DB
 {
     private db: Sequelize

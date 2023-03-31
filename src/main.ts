@@ -4,6 +4,7 @@ import DB from "./database/db.js"
 import { ConsoleLogger } from "./logger/console.js"
 import { Logger } from "./logger/logger.js"
 
+
 class App
 {
     private db: DB

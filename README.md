@@ -1,10 +1,10 @@
-# **eShop**(backend) - simple eshop project written in typescript
+# eShop (backend) - simple eshop project written in typescript
 
 ## **Features**:
-- Cart [todo]
-- Item Listing [todo]
-- User account [todo]
-- Admin panel [todo]
+- [ ] Cart
+- [ ] Item Listing
+- [ ] User account
+- [ ] Admin panel
 
-## License - GPL-3
-## Made by eXoterr
+#### License - GNU GPL-3
+#### Made by eXoterr
