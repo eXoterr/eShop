@@ -1,8 +1,8 @@
 import chalk from "chalk"
-import { IOutput } from "./types.js"
+import { BaseLogger } from "./base.js"
 
 
-class ConsoleLogger implements IOutput
+class ConsoleLogger extends BaseLogger
 {
     public info(message: string)
     {

@@ -1,7 +1,6 @@
 import express, {Express} from "express"
 import config from "./config.js"
 import DB from "./database/db.js"
-import { ConsoleLogger } from "./logger/console.js"
 import { Logger } from "./logger/logger.js"
 
 
@@ -9,13 +8,16 @@ class App
 {
     private db: DB
     private server: Express
-    public static logger: Logger
 
     constructor()
     {
-        this.setupLogger()
         config.readConfig()
+
+        Logger.level = Number(process.env.LOG_LEVEL || 0)
+        Logger.start()
+
         this.server = express()
+
         this.db = new DB()
     }
 
@@ -27,7 +29,7 @@ class App
         }
         catch (e)
         {
-            App.logger.error(`unable to connect to db: ${e}`)
+            Logger.error(`unable to connect to db: ${e}`)
             return
         }
         
@@ -37,22 +39,16 @@ class App
         {
             this.server.listen(
                 port,
-                () => App.logger.info(`listening at port: ${port}`)
+                () => Logger.info(`listening at port: ${port}`)
             )
         }
         catch (e)
         {
-            App.logger.error(`unable to start server: ${e}`)
+            Logger.error(`unable to start server: ${e}`)
             return
         }
     }
 
-    private setupLogger()
-    {
-        const cLogger = new ConsoleLogger()
-        const logger = new Logger(cLogger)
-        App.logger = logger
-    }
 }
 
 const app = new App()
