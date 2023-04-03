@@ -2,6 +2,8 @@ import express, {Express} from "express"
 import config from "./config.js"
 import DB from "./database/db.js"
 import { Logger } from "./logger/logger.js"
+import { requestLogger } from "./middleware/logger.js"
+import { AuthRouter } from "./router/auth.js"
 
 
 class App
@@ -16,9 +18,11 @@ class App
         Logger.level = Number(process.env.LOG_LEVEL || 0)
         Logger.start()
 
-        this.server = express()
-
         this.db = new DB()
+
+        this.server = express()
+        this.server.use(requestLogger)
+        
     }
 
     public async start()
@@ -34,6 +38,8 @@ class App
         }
         
         const port = process.env.PORT || 5000
+
+        this.server.use('/auth', new AuthRouter().router)
 
         try
         {

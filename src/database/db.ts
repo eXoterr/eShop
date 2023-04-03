@@ -22,18 +22,26 @@ class DB
         )
     }
 
+    private models = [
+        User,
+        Good,
+        Attribute
+    ]
+
     private initModels()
     {
-        User.connect(this.db)
-        Good.connect(this.db)
-        Attribute.connect(this.db)
+        for(let model of this.models)
+        {
+            model.connect(this.db)
+        }
     }
 
     private assoicateModels()
     {
-        User.associate()
-        Good.associate()
-        Attribute.associate()
+        for(let model of this.models)
+        {
+            model.associate()
+        }
     }
 
     private async syncModels()

@@ -13,17 +13,20 @@ class User extends Model {
                     primaryKey: true
                 },
                 username: {
-                    type: DataTypes.STRING
+                    type: DataTypes.STRING,
+                    unique: true
                 },
                 email: {
-                    type: DataTypes.STRING
+                    type: DataTypes.STRING,
+                    unique: true
                 },
                 password: {
                     type: DataTypes.STRING
                 },
                 role: {
                     type: DataTypes.ENUM,
-                    values: ['USER', 'ADMIN']
+                    values: ['USER', 'ADMIN'],
+                    defaultValue: "USER"
                 }
             },
             {
