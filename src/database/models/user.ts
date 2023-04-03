@@ -3,6 +3,12 @@ import { Good } from "./good.js";
 
 
 class User extends Model {
+    declare id: number;
+    declare username: string;
+    declare email: string;
+    declare password: string;
+    declare role: string;
+
     public static connect(connection: Sequelize)
     {
         User.init(

@@ -7,7 +7,7 @@ import { Logger } from "../logger/logger.js";
 
 class RegisterController
 {
-    private static signUpValidators = [
+    private static validators = [
         body("username").notEmpty().isLength({min: 3, max: 25}),
         body("email").notEmpty().isEmail(),
         body("password").notEmpty().isLength({min: 8, max: 60})
@@ -75,7 +75,7 @@ class RegisterController
 
     public static controller()
     {
-        return [...this.signUpValidators, this.signUp]
+        return [...this.validators, this.signUp]
     }
 }
 
