@@ -1,6 +1,6 @@
 import { Router } from "express"
 import { BaseRouter } from "./base.js"
-import { AuthControllers } from "../controller/auth.js"
+import { RegisterController } from "../controller/auth.js"
 
 class AuthRouter extends BaseRouter
 {
@@ -20,7 +20,7 @@ class AuthRouter extends BaseRouter
 
     protected setupRoutes()
     {
-        this.instance.post('/register', AuthControllers.signUp)
+        this.instance.post('/register', RegisterController.controller())
     }
 }
 

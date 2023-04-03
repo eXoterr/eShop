@@ -1,4 +1,4 @@
-import express, {Express} from "express"
+import express, {Express, json} from "express"
 import config from "./config.js"
 import DB from "./database/db.js"
 import { Logger } from "./logger/logger.js"
@@ -21,6 +21,7 @@ class App
         this.db = new DB()
 
         this.server = express()
+        this.server.use(json())
         this.server.use(requestLogger)
         
     }

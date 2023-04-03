@@ -5,14 +5,16 @@ import bcryptjs from "bcryptjs"
 import { Op } from "sequelize";
 import { Logger } from "../logger/logger.js";
 
-class AuthControllers
+class RegisterController
 {
-    public static async signUp(req: Request, resp: Response)
-    {
-        body("login").isLength({min: 3, max: 25})
-        body("email").isEmail()
-        body("password").isLength({min: 8, max: 60})
+    private static signUpValidators = [
+        body("username").notEmpty().isLength({min: 3, max: 25}),
+        body("email").notEmpty().isEmail(),
+        body("password").notEmpty().isLength({min: 8, max: 60})
+    ]
 
+    private static async signUp(req: Request, resp: Response)
+    {
         const errors = validationResult(req)
 
         if (!errors.isEmpty())
@@ -64,12 +66,17 @@ class AuthControllers
             }
         )
 
-        Logger.info(`registered user with username ${req.body.username} and email ${req.body.email}`)
+        Logger.info(`registered user with username "${req.body.username}" and email "${req.body.email}"`)
 
         return resp.status(201).json({
             result: "ok"
         })
     }
+
+    public static controller()
+    {
+        return [...this.signUpValidators, this.signUp]
+    }
 }
 
-export {AuthControllers}
+export {RegisterController}
