@@ -51,7 +51,7 @@ class Logger
     }
     public static error(message: string)
     {
-        if(this.lvl >= 1)
+        if(this.lvl >= 0)
         {
             this.instance.error(message)
         }
@@ -65,4 +65,4 @@ class Logger
     }
 }
 
-export {BaseLogger, Logger}
+export {Logger}
