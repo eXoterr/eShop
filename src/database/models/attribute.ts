@@ -1,7 +1,6 @@
 import { Model, Sequelize, DataTypes } from "sequelize";
 import { Good } from "./good.js";
 
-
 class Attribute extends Model {
     public static connect(connection: Sequelize)
     {

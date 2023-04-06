@@ -1,7 +1,6 @@
 import { BaseLogger } from "./base.js"
 import { ConsoleLogger } from "./console.js"
 
-
 class Logger
 {
     private static instance: BaseLogger
@@ -16,7 +15,7 @@ class Logger
         }
         if(lvl > 3)
         {
-            throw new Error("level must less or equal 3")
+            throw new Error("level must be less or equal 3")
         }
         this.lvl = lvl
     }
@@ -31,7 +30,7 @@ class Logger
         if(!this.instance)
         {
             this.instance = new ConsoleLogger() // Logger initialization
-            this.debug("Logger started")
+            this.debug("logger started")
         }
     }
 

@@ -1,6 +1,5 @@
 import dotenv from "dotenv"
 
-
 /**
  * Configures application
  * 

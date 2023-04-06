@@ -1,7 +1,6 @@
 import chalk from "chalk"
 import { BaseLogger } from "./base.js"
 
-
 class ConsoleLogger extends BaseLogger
 {
     public info(message: string)

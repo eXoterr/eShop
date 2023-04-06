@@ -46,7 +46,7 @@ class DB
 
     private async syncModels()
     {
-        await this.db.sync({force: true})
+        await this.db.sync({alter: true})
     }
 
     public async connect()

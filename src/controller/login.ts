@@ -22,13 +22,23 @@ class LoginController
             return resp.status(400).json(errors.array())
         }
 
-        const user = await User.findOne(
-            {
-                where: {
-                    username: req.body.username
+        let user: User | null
+
+        try 
+        {
+            user = await User.findOne(
+                {
+                    where: {
+                        username: req.body.username
+                    }
                 }
-            }
-        )
+            )
+        } 
+        catch (e)
+        {
+            Logger.error(`unable to get data from db: ${e}`)
+            return resp.status(500)
+        }
 
         if (!user)
         {

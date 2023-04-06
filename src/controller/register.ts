@@ -58,13 +58,21 @@ class RegisterController
 
         const hashedPassword = await bcryptjs.hash(req.body.password, 7)
 
-        await User.create(
-            {
-                username: req.body.username,
-                email: req.body.email,
-                password: hashedPassword,
-            }
-        )
+        try 
+        {
+            await User.create(
+                {
+                    username: req.body.username,
+                    email: req.body.email,
+                    password: hashedPassword,
+                }
+            )    
+        }
+        catch (e)
+        {
+            Logger.error(`unable to save data to db: ${e}`)
+            return resp.status(500)
+        }
 
         Logger.info(`registered user with username "${req.body.username}" and email "${req.body.email}"`)
 

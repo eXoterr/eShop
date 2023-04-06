@@ -1,7 +1,6 @@
 import { Model, Sequelize, DataTypes } from "sequelize";
 import { Good } from "./good.js";
 
-
 class User extends Model {
     declare id: number;
     declare username: string;

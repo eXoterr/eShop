@@ -2,7 +2,6 @@ import { Model, Sequelize, DataTypes } from "sequelize";
 import { Attribute } from "./attribute.js";
 import { User } from "./user.js";
 
-
 class Good extends Model {
     public static connect(connection: Sequelize)
     {

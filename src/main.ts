@@ -4,7 +4,9 @@ import DB from "./database/db.js"
 import { Logger } from "./logger/logger.js"
 import { requestLogger } from "./middleware/logger.js"
 import { AuthRouter } from "./router/auth.js"
-
+import { requestGuard } from "./middleware/guard.js"
+import { GoodsRouter } from "./router/goods.js"
+import cors from "cors"
 
 class App
 {
@@ -22,8 +24,9 @@ class App
 
         this.server = express()
         this.server.use(json())
+        this.server.use(cors())
         this.server.use(requestLogger)
-        
+
     }
 
     public async start()
@@ -40,6 +43,7 @@ class App
         
         const port = process.env.PORT || 5000
 
+        this.server.use('/', new GoodsRouter().router)
         this.server.use('/auth', new AuthRouter().router)
 
         try

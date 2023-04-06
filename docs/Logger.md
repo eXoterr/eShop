@@ -1,6 +1,6 @@
 # Logging system
 
-## logging system contains 4 logging levels:
+## logging system supports 4 logging levels:
 - DEBUG - 3
 - INFO - 2 
 - WARNING - 1
