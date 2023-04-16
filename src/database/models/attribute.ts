@@ -25,6 +25,10 @@ class Attribute extends Model {
             }
         )   
     }
+
+    /**
+     * Creates relations to other models
+    */
     public static associate()
     {
         Attribute.belongsTo(Good)

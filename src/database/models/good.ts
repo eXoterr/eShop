@@ -35,6 +35,10 @@ class Good extends Model {
         )
         
     }
+
+    /**
+     * Creates relations to other models
+    */
     public static associate()
     {
         Good.hasMany(Attribute)

@@ -8,6 +8,10 @@ import { requestGuard } from "./middleware/guard.js"
 import { GoodsRouter } from "./router/goods.js"
 import cors from "cors"
 
+/**
+ * Main application class
+*/
+
 class App
 {
     private db: DB
@@ -17,19 +21,19 @@ class App
     {
         config.readConfig()
 
-        Logger.level = Number(process.env.LOG_LEVEL || 0)
-        Logger.start()
+        Logger.level = Number(process.env.LOG_LEVEL || 0) // Sets logging level
+        Logger.start() // Starts logger
 
         this.db = new DB()
 
-        this.server = express()
+        this.server = express() // Creates server and add default middlewares
         this.server.use(json())
         this.server.use(cors())
         this.server.use(requestLogger)
 
     }
 
-    public async start()
+    public async start() // App entrypoint declaration
     {
         try
         {
@@ -43,7 +47,7 @@ class App
         
         const port = process.env.PORT || 5000
 
-        this.server.use('/', new GoodsRouter().router)
+        this.server.use('/', new GoodsRouter().router) // Connect routers to server
         this.server.use('/auth', new AuthRouter().router)
 
         try
@@ -62,5 +66,5 @@ class App
 
 }
 
-const app = new App()
+const app = new App() // Entry point
 app.start()

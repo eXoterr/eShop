@@ -2,7 +2,6 @@ import dotenv from "dotenv"
 
 /**
  * Configures application
- * 
 */
 function readConfig()
 {

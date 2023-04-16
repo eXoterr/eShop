@@ -40,6 +40,10 @@ class User extends Model {
             }
         )
     }
+
+    /**
+     * Creates relations to other models
+    */
     public static associate()
     {
         User.hasMany(Good)

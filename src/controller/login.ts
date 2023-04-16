@@ -75,6 +75,9 @@ class LoginController
         })
     }
 
+    /**
+     * Returns validators and controller
+    */
     public static controller()
     {
         return [...this.validators, this.signIn]

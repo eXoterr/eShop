@@ -81,6 +81,9 @@ class RegisterController
         })
     }
 
+    /**
+     * Returns validators and controller
+    */
     public static controller()
     {
         return [...this.validators, this.signUp]

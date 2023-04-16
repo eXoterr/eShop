@@ -2,6 +2,9 @@ import { Response, Request } from "express"
 import { Logger } from "../logger/logger.js"
 import jsonwebtoken from "jsonwebtoken"
 
+/**
+ * Checks for user authorization
+*/
 const requestGuard = (req: Request, resp: Response, next: Function) =>
 {
     if (!req.headers?.authorization)

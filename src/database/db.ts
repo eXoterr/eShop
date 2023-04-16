@@ -22,12 +22,15 @@ class DB
         )
     }
 
-    private models = [
+    private models = [ // Models list
         User,
         Good,
         Attribute
     ]
 
+    /**
+     * Adds model to ORM
+    */
     private initModels()
     {
         for(let model of this.models)
@@ -36,6 +39,9 @@ class DB
         }
     }
 
+    /**
+     * Creates relations of models in ORM
+    */
     private assoicateModels()
     {
         for(let model of this.models)
@@ -44,11 +50,17 @@ class DB
         }
     }
 
+    /**
+     * Syncs table declarations to DB server
+    */
     private async syncModels()
     {
         await this.db.sync({alter: true})
     }
 
+    /**
+     * Prepares connection and connects to db
+    */
     public async connect()
     {
         await this.db.authenticate()

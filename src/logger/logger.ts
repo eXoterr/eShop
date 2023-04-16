@@ -1,6 +1,10 @@
 import { BaseLogger } from "./base.js"
 import { ConsoleLogger } from "./console.js"
 
+/**
+ * Logger "relay" class
+ * To use logging feature you must use this class
+*/
 class Logger
 {
     private static instance: BaseLogger
@@ -29,7 +33,7 @@ class Logger
     {
         if(!this.instance)
         {
-            this.instance = new ConsoleLogger() // Logger initialization
+            this.instance = new ConsoleLogger() // Logger implementation initialization
             this.debug("logger started")
         }
     }

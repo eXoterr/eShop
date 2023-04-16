@@ -19,7 +19,7 @@ class GoodsListController
             return resp.status(400).json(errors.array())
         }
 
-        try
+        try // Pagination
         {
             const goods = await Good.findAll({limit: 20, offset: (Number(req.query['page'] || 0)) * 20})
             return resp.status(200).json(goods)
@@ -33,6 +33,9 @@ class GoodsListController
         
     }
 
+    /**
+     * Returns validators and controller
+    */
     public static controller()
     {
         return [...this.validators, this.goodsList]
@@ -68,6 +71,9 @@ class GoodAddController
         return resp.status(200).json(goods)
     }
 
+    /**
+     * Returns validators and controller
+    */
     public static controller()
     {
         return [...this.validators, this.addGood]
@@ -115,6 +121,9 @@ class GoodRemoveController
         })
     }
 
+    /**
+     * Returns validators and controller
+    */
     public static controller()
     {
         return [...this.validators, this.removeGood]

@@ -15,7 +15,7 @@ class GoodsRouter extends BaseRouter
     {
         super()
         
-        this.instance = Router()
+        this.instance = Router() // Creates new router
 
         this.setupRoutes()
     }
@@ -25,6 +25,9 @@ class GoodsRouter extends BaseRouter
         return this.instance
     }
 
+    /**
+     * Registers routes in created router
+    */
     protected setupRoutes()
     {
         this.instance.get('/', GoodsListController.controller())
